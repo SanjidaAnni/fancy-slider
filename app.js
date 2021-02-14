@@ -38,13 +38,16 @@ const getImages = (query) => {
 let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
-  element.classList.add('added');
+  element.classList.toggle('added');
 
   let item = sliders.indexOf(img);
   if (item === -1) {
     sliders.push(img);
   } else {
-    alert('Hey, Already added !')
+    // alert('Hey, Already added !')
+    const removeDuplicate = img
+    const filteredItems = sliders.filter(slider => slider !== removeDuplicate)
+   sliders=filteredItems
   }
 }
 var timer
@@ -65,7 +68,7 @@ const createSlider = () => {
 
   sliderContainer.appendChild(prevNext)
   document.querySelector('.main').style.display = 'block';
-  // hide image aria
+  // hide image area
   imagesArea.style.display = 'none';
   const durationTime = document.getElementById('duration').value;
   const durationTimeNumber = parseInt(durationTime);
